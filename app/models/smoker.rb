@@ -1,0 +1,2 @@
+class Smoker < ApplicationRecord
+end
