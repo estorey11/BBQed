@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_202552) do
 
   create_table "smokers", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "smoker_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
