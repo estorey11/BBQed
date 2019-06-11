@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Smoker.create(smoker_type: "Ugly Drum", name:"Pit Barrel Cooker")
 Smoker.create(smoker_type: "Pellet", name:"Traeger")
+Smoker.create(smoker_type: "Offset", name:"Yoder")
+Smoker.create(smoker_type: "Electric", name:"Masterbuilt")
+Smoker.create(smoker_type: "Egg/Bullet", name:"Big Green Egg")
 
 Food.create(animal: "Beef", cut: "Brisket")
 Food.create(animal: "Beef", cut: "Back Ribs")

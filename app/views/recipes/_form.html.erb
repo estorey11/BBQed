@@ -1,12 +1,25 @@
 
 <%= form_for @recipe do |f| %>
 
+  <%= f.hidden_field :user_id %>
+
   <%= f.fields_for :food do |food| %>
     <%= food.label :animal %>
-    <%= food.text_field :animal %><br>
+    <%= food.text_field :animal, list: "animals" %>
+    <datalist id="animals">
+      <% unique_animals.each do |animal| %>
+        <option value="<%= animal %>">
+      <% end %>
+    </datalist><br>
 
     <%= food.label :cut %>
-    <%= food.text_field :cut %><br>
+    <%= food.text_field :cut, list: "cuts" %>
+    <datalist id="cuts">
+      <% unique_cuts.each do |cut| %>
+        <option value="<%= cut %>">
+      <% end %>
+    </datalist><br>
+
   <% end %>
 
   <%= f.label :food_amount %>
@@ -19,11 +32,16 @@
   <%= f.text_field :rub %><br>
 
   <%= f.fields_for :smoker do |smoker| %>
-    <%= smoker.label :name %>
-    <%= smoker.text_field :name %><br>
+    <%= smoker.label "Smoker Name" %>
+    <%= smoker.text_field :name, list: "names" %>
+    <datalist id="names">
+      <% Smoker.all.each do |s| %>
+        <option value="<%= s.name %>">
+      <% end %>
+    </datalist><br>
 
     <%= smoker.label :smoker_type %>
-    <%= smoker.text_field :smoker_type %><br>
+    <%= smoker.collection_select :smoker_type, Smoker.all, :smoker_type, :smoker_type %><br>
   <% end %>
 
   <%= f.label :wood %>
