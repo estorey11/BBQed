@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     @user=User.find(session[:user_id])
   end
 
+  def index
+  end
+
   private
 
   def user_params
