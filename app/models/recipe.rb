@@ -15,6 +15,7 @@ class Recipe < ApplicationRecord
   end
 
   def self.with_animal_and_smoker_type(animal, smoker_type)
+    includes(:food, :smoker).where(foods: { animal: animal }, smokers: { smoker_type: smoker_type })
   end
 
   def self.with_animal(animal)

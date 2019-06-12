@@ -4,10 +4,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    return redirect_to controller: 'users', action: 'new' unless @user.save
-    session[:user_id] = @user.id
-    redirect_to user_path(@user)
+    @user = User.new(user_params)
+
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      render :new
+    end
   end
 
   def home

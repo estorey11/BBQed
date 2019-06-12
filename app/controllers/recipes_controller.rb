@@ -50,7 +50,9 @@ class RecipesController < ApplicationController
   end
 
   def index
-    if !params[:animal].blank?
+    if !params[:smoker_type].blank? && !params[:animal].blank?
+      @recipes = Recipe.with_animal_and_smoker_type(params[:animal], params[:smoker_type])
+    elsif !params[:animal].blank?
       @recipes = Recipe.with_animal(params[:animal])
     elsif !params[:smoker_type].blank?
       @recipes = Recipe.with_smoker_type(params[:smoker_type])
