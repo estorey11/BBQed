@@ -11,13 +11,13 @@
 
   <body>
     <div class="wrapper">
-      <header>
+      <header class="navigation">
         <% if logged_in? %>
           <%= link_to "Log Out", '/logout'%>&nbsp|&nbsp
           <%= link_to "Your Homepage", user_path(current_user)%>&nbsp|&nbsp
           <%= link_to "View All Recipes", recipes_path%>
         <% end %>
-        <br><br><br>
+        
       </header>
 
 

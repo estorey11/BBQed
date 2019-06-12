@@ -97,6 +97,12 @@
      margin-top: 20px;
      padding-top: 20px;
    }
+
+   header.navigation {
+     border-bottom: 2px solid #ccc;
+     margin-bottom: 10px;
+     padding-bottom: 10px;
+   }
  }
 
  @media screen and (max-width: 600px) {
