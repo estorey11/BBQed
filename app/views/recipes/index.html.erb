@@ -2,7 +2,7 @@
   <h3>Filter Recipes:</h3>
     <%= form_tag("/recipes", method: "get") do %>
       Meat: <%= select_tag "animal", options_for_select(unique_animals), include_blank: true %><br>
-      Smoker: <%= select_tag "smoker", options_for_select(unique_smokers), include_blank: true %><br>
+      Smoker: <%= select_tag "smoker_type", options_for_select(unique_smoker_types), include_blank: true %><br>
       <%= submit_tag "Filter" %>
     <% end %>
 <br><br><br>

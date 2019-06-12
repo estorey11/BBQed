@@ -14,12 +14,14 @@ class Recipe < ApplicationRecord
     self.smoker.update(smoker)
   end
 
-  def self.with_animal_and_smoker_type
+  def self.with_animal_and_smoker_type(animal, smoker_type)
   end
 
-  def self.with_animal
+  def self.with_animal(animal)
+    includes(:food).where(foods: { animal: animal })
   end
 
-  def self.with_smoker_type
+  def self.with_smoker_type(smoker_type)
+    includes(:smoker).where(smokers: { smoker_type: smoker_type })
   end
 end
