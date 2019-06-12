@@ -15,9 +15,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    binding.pry
-    #@recipe.food_attributes=(recipe_params[:food_attributes])
-    #@recipe.smoker_attributes=(recipe_params[:smoker_attributes])
     if @recipe.save!
       redirect_to @recipe
     else

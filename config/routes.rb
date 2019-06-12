@@ -4,13 +4,14 @@ Rails.application.routes.draw do
     resources :recipes, only: [:index, :show, :new, :edit]
   end
 
+
   resources :recipes
 
   root 'welcome#home'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
 
   get 'users/home' => 'users#home'
 end
