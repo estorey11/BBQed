@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
   get 'users/home' => 'users#home'
 
-  get '/auth/google/callback' => 'sessions#create_google'
+  get 'auth/:provider/callback', to: 'sessions#googleAuth'
+  get 'auth/failure', to: redirect('/')
 end

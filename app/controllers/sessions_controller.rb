@@ -8,14 +8,8 @@ class SessionsController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def create_google
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.username = auth['info']['name']
-    end
+  def googleAuth
 
-    session[:user_id] = @user.id
-
-    render user_path(@user)
   end
 
   def new
