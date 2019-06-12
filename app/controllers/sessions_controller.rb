@@ -8,6 +8,16 @@ class SessionsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def create_google
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.username = auth['info']['name']
+    end
+
+    session[:user_id] = @user.id
+
+    render user_path(@user)
+  end
+
   def new
     @user=User.new
   end
@@ -17,5 +27,10 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
+  def auth
+    request.env['omniauth.auth']
+  end
 
 end

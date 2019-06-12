@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   get 'users/home' => 'users#home'
+
+  get '/auth/google/callback' => 'sessions#create_google'
 end

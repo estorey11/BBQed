@@ -4,8 +4,10 @@ class RecipesController < ApplicationController
 
 
   def new
-    if params[:user_id] && !User.exists?(params[:user_id])
-      redirect_to root, alert: "You must log in to create recipes"
+    @user = User.find_by(id: params[:user_id])
+
+    if !helpers.logged_in? || @user!=helpers.current_user
+      redirect_to root_path, alert: "You must log in to create recipes"
     else
       @recipe = Recipe.new(user_id: params[:user_id])
       @recipe.food= Food.new
@@ -26,8 +28,6 @@ class RecipesController < ApplicationController
     @recipe=Recipe.find_by(id: params[:id])
   end
 
-  def index
-  end
 
   def edit
     @user = User.find_by(id: params[:user_id])
