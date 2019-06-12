@@ -13,4 +13,13 @@ class Recipe < ApplicationRecord
     self.smoker = Smoker.find_or_create_by(name: smoker[:name], smoker_type: smoker[:type])
     self.smoker.update(smoker)
   end
+
+  def self.with_animal_and_smoker_type
+  end
+
+  def self.with_animal
+  end
+
+  def self.with_smoker_type
+  end
 end
