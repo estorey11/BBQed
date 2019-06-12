@@ -5,7 +5,6 @@ class Recipe < ApplicationRecord
   belongs_to :smoker
 
   def food_attributes=(food)
-
     self.food = Food.find_or_create_by(animal: food[:animal], cut: food[:cut])
     self.food.update(food)
   end

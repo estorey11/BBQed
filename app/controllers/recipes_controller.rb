@@ -46,6 +46,16 @@ class RecipesController < ApplicationController
     end
   end
 
+  def update
+    @recipe=Recipe.find_by(id: params[:id])
+    @recipe.update(recipe_params)
+    redirect_to recipe_path(@recipe)
+  end
+
+  def index
+    @recipes=Recipe.all
+  end
+
   private
 
   def recipe_params

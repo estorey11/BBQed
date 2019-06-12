@@ -1,3 +1,5 @@
-<%= @user.username %>'s Homepage
+<h1><%= @user.username %>'s Homepage</h1>
+
+<%= render 'recipes/recipes' %>
 
 <%= link_to "New Recipe", new_user_recipe_path(@user) %>
