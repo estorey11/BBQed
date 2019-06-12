@@ -30,16 +30,17 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      if user.nil?
+    @user = User.find_by(id: params[:user_id])
+
+    if !helpers.logged_in? || @user!=helpers.current_user
+      redirect_to root_path, alert: "You must be logged in to edit your recipes."
+    else
+      if @user.nil?
         redirect_to recipes_path, alert: "User not found."
       else
-        @recipe = user.recipes.find_by(id: params[:id])
-        redirect_to user_recipes_path(user), alert: "Recipe not found." if @recipe.nil?
+        @recipe = @user.recipes.find_by(id: params[:id])
+        redirect_to user_recipes_path(@user), alert: "Recipe not found." if @recipe.nil?
       end
-    else
-      @recipe=Recipe.find_by(id: params[:id])
     end
   end
 

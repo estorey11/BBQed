@@ -4,8 +4,8 @@
   <%= f.hidden_field :user_id %>
 
   <%= f.fields_for :food do |food| %>
-    <%= food.label :animal %>
-    <%= food.text_field :animal, list: "animals" %>
+
+    Meat <%= food.text_field :animal, list: "animals" %>
     <datalist id="animals">
       <% unique_animals.each do |animal| %>
         <option value="<%= animal %>">
@@ -35,13 +35,13 @@
     <%= smoker.label "Smoker Name" %>
     <%= smoker.text_field :name, list: "names" %>
     <datalist id="names">
-      <% Smoker.all.each do |s| %>
-        <option value="<%= s.name %>">
+      <% unique_smokers.each do |s| %>
+        <option value="<%= s %>">
       <% end %>
     </datalist><br>
 
     <%= smoker.label :smoker_type %>
-    <%= smoker.collection_select :smoker_type, Smoker.all, :smoker_type, :smoker_type %><br>
+    <%= smoker.select "smoker_type", options_for_select(unique_smoker_types) %><br>
   <% end %>
 
   <%= f.label :wood %>
