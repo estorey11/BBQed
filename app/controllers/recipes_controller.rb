@@ -15,6 +15,9 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    binding.pry
+    #@recipe.food_attributes=(recipe_params[:food_attributes])
+    #@recipe.smoker_attributes=(recipe_params[:smoker_attributes])
     if @recipe.save!
       redirect_to @recipe
     else
@@ -29,9 +32,23 @@ class RecipesController < ApplicationController
   def index
   end
 
+  def edit
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      if user.nil?
+        redirect_to recipes_path, alert: "User not found."
+      else
+        @recipe = user.recipes.find_by(id: params[:id])
+        redirect_to user_recipes_path(user), alert: "Recipe not found." if @recipe.nil?
+      end
+    else
+      @recipe=Recipe.find_by(id: params[:id])
+    end
+  end
+
   private
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, :food_attributes, :smoker_attributes, :food_unit, :food_amount, :temp, :wood, :time, :result, :rub, :wrap)
+    params.require(:recipe).permit(:user_id, {food_attributes: [:animal, :cut]}, {smoker_attributes: [:name, :smoker_type]}, :food_unit, :food_amount, :temp, :wood, :time, :result, :rub, :wrap)
   end
 end

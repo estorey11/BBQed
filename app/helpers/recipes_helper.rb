@@ -22,4 +22,11 @@ module RecipesHelper
     Smoker.all.each{|smoker| smokers << smoker.smoker_type}
     smokers.uniq
   end
+
+  def food_display(recipe)
+    display="#{recipe.food_amount} #{recipe.food_unit} "
+    display << recipe.food.animal if recipe.food.animal !="None"
+    display << " #{recipe.food.cut} by #{recipe.user.username}"
+    display
+  end
 end

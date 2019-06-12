@@ -1,1 +1,15 @@
-<%= @recipe %>
+
+<h2><%= food_display(@recipe) %></h2>
+
+<ul>
+  <li>Time: <%= @recipe.time %></li>
+  <li>Temp: <%= @recipe.temp %></li>
+  <li>Smoker: <%= @recipe.smoker.name %></li>
+  <li>Smoker Type: <%= @recipe.smoker.smoker_type %></li>
+  <li>Rub: <%= @recipe.rub %></li>
+  <li>Wood: <%= @recipe.wood %></li>
+  <li>Wrap: <%= @recipe.wrap %></li>
+  <li>Result: <%= @recipe.result %></li>
+</ul>
+
+ <%= link_to "Edit this recipe", edit_user_recipe_path(@recipe.user, @recipe) %>
