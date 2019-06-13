@@ -35,4 +35,10 @@ module RecipesHelper
        link_to 'Edit this recipe', edit_user_recipe_path(@recipe.user, @recipe)
     end
   end
+
+  def delete_if_allowed(user)
+    if user == current_user
+       link_to 'Delete this recipe', user_recipe_path(@recipe.user, @recipe), method: :delete
+    end
+  end
 end

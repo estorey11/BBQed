@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   belongs_to :food
   belongs_to :smoker
+  validates :food_id, presence: true
 
   def food_attributes=(food)
     self.food = Food.find_or_create_by(animal: food[:animal], cut: food[:cut])

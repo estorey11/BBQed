@@ -1,24 +1,7 @@
-# README
+# BBQed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+BBQed is a rails based app that allows users to create accounts and log BBQ recipes. Users can view logged recipes from other users and filter them by meat type and smoker type used.
 
-Things you may want to cover:
+## License
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
