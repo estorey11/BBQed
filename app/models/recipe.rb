@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
   belongs_to :food
   belongs_to :smoker
   validates :food_id, presence: true
-  validates :smoker_id, presence: true
+  #validates :smoker_id, presence: true
   validates :time, presence: true
   validates :temp, presence: true
   validates :time, :inclusion => 0..24
