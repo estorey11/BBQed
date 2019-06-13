@@ -4,6 +4,11 @@ class Recipe < ApplicationRecord
   belongs_to :food
   belongs_to :smoker
   validates :food_id, presence: true
+  validates :smoker_id, presence: true
+  validates :time, presence: true
+  validates :temp, presence: true
+  validates :time, :inclusion => 0..24
+  validates :temp, :inclusion => 100..600
 
   def food_attributes=(food)
     self.food = Food.find_or_create_by(animal: food[:animal], cut: food[:cut])
