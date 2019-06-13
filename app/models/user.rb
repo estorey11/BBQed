@@ -6,4 +6,12 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :username, uniqueness: true
+
+  def self.from_omniauth(auth)
+    # Creates a new user only if it doesn't exist
+    where(username: auth.info.name).first_or_initialize do |user|
+      user.username = auth.info.name
+      user.password = user.password_confirmation = SecureRandom.urlsafe_base64(n=6)
+    end
+  end
 end
