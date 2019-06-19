@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_170157) do
+ActiveRecord::Schema.define(version: 2019_06_13_201855) do
 
   create_table "foods", force: :cascade do |t|
     t.string "animal"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 2019_06_12_170157) do
     t.integer "smoker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "results_image_file_name"
+    t.string "results_image_content_type"
+    t.integer "results_image_file_size"
+    t.datetime "results_image_updated_at"
   end
 
   create_table "smokers", force: :cascade do |t|

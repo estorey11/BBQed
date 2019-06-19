@@ -32,6 +32,9 @@ gem 'pry'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'thin'
+
+gem "paperclip", "~> 6.0.0"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

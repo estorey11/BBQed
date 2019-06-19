@@ -10,6 +10,7 @@
   <li>Wood: <%= @recipe.wood %></li>
   <li>Wrap: <%= @recipe.wrap %></li>
   <li>Result: <%= @recipe.result %></li>
+  <li><%= image_tag @recipe.results_image.url(:medium) %></li>
 </ul>
 <br>
 

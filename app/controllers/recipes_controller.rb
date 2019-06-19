@@ -77,6 +77,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:user_id, {food_attributes: [:animal, :cut]}, {smoker_attributes: [:name, :smoker_type]}, :food_unit, :food_amount, :temp, :wood, :time, :result, :rub, :wrap)
+    params.require(:recipe).permit(:user_id, {food_attributes: [:animal, :cut]}, {smoker_attributes: [:name, :smoker_type]}, :food_unit, :food_amount, :temp, :wood, :time, :result, :rub, :wrap, :results_image)
   end
 end

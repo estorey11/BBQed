@@ -10,6 +10,9 @@ class Recipe < ApplicationRecord
   validates :time, :inclusion => 0..24
   validates :temp, :inclusion => 100..600
 
+  has_attached_file :results_image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :results_image, content_type: /\Aimage\/.*\z/
+
   def food_attributes=(food)
     self.food = Food.find_or_create_by(animal: food[:animal], cut: food[:cut])
     self.food.update(food)
