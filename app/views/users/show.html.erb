@@ -8,3 +8,15 @@
 
 <h2>Logged Recipes</h2>
 <%= render 'recipes/recipes' %>
+
+<div id="recipes">
+  <p id="recipeLink"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+    $.get("/users/" + <%= @user.id %> + ".json", function(data) {
+      $(".recipeLink").text(data);
+    });
+});
+</script>

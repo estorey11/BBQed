@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#googleAuth'
   get 'auth/failure', to: redirect('/')
+
 end
