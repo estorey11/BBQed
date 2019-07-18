@@ -34,6 +34,7 @@ gem 'dotenv-rails'
 gem 'thin'
 
 gem "paperclip", "~> 6.0.0"
+gem 'active_model_serializers'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
