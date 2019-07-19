@@ -40,9 +40,7 @@
       return `<li>${this.content}</li><br><li>Submitted by: ${this.user_name}</li><br><br>`;
     }
 
-    //full_comment(){
-    //  return `<li>${this.content}</li><br><li>Submitted by: ${this.user_name}</li><br><br>`;
-    //}
+
   }
 
   $.get("/recipes/" + <%= @recipe.id %> + ".json", function(recipe_data){
@@ -61,6 +59,7 @@ $(function() {
     $.get("/comments/" + id + ".json", function(comment_data) {
       $(`#comment-${id}`).text(`${comment_data["content"]}`);
     });
+    $(this).remove();
   });
 });
 </script>
