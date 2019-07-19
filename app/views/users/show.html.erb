@@ -16,7 +16,28 @@
   const recipe_ids=<%= @recipes.map{|recipe| recipe.id} %>;
   recipe_ids.forEach(function(recipe_id) {
     $.get("/recipes/" + recipe_id + ".json", function(recipe_data) {
-      $("#recipes").append(`<li>${recipe_data["food_amount"] ? recipe_data["food_amount"] : ''} ${recipe_data["food_unit"]} ${recipe_data["food"]["animal"]} ${recipe_data["food"]["cut"]}  <button class="js-more" data-id="${recipe_id}">See Full Recipe</button></li>`);
+      $("#recipes").append(`<li id="recipe-${recipe_id}">${recipe_data["food_amount"] ? recipe_data["food_amount"] : ''} ${recipe_data["food_unit"]} ${recipe_data["food"]["animal"]} ${recipe_data["food"]["cut"]}  <button class="js-more" data-id="${recipe_id}">See Full Recipe</button></li><br><br>`);
     });
   });
+</script>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(document).on("click", ".js-more", function() {
+    let id = $(this).data("id");
+    $.get("/recipes/" + id + ".json", function(data) {
+      $(`#recipe-${id}`).append(`<ul>
+        <li>Time in hours: ${data["time"]}</li>
+        <li>Temp in Fahrenheit: ${data["temp"]}</li>
+        <li>Smoker: ${data["smoker"]["name"]}</li>
+        <li>Smoker Type: ${data["smoker"]["smoker_type"]}</li>
+        <li>Rub: ${data["rub"]}</li>
+        <li>Wood: ${data["wood"]}</li>
+        <li>Wrap: ${data["wrap"]}</li>
+        <li>Result: ${data["result"]}</li>
+      </ul>`);
+    });
+    $(this).remove();
+  });
+});
 </script>
