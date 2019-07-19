@@ -25,15 +25,25 @@
 <%=delete_if_allowed(@recipe.user)%>
 
 <script type="text/javascript" charset="utf-8">
-  //const comment_data_array= $.get("/recipes/" + <%= @recipe.id %> + ".json")["comments"];
-  //debugger;
-  //comment_data_array.forEach(function(comment_data){
-  //  $("#comments").append(`<li>${comment_data["content"]}</li><br><li>Submitted by: ${comment_data["user"]["username"]}</li><br><br>`);
-  //});
+
+  class Comment {
+    constructor(content, user_name) {
+      this.content = content;
+      this.user_name = user_name;
+    }
+
+    truncate_if_long() {
+      if (this.content.length > 200){
+        return `<li>${this.content.substring(0, 240)}...</li><br><li>Submitted by: ${this.user_name}</li><br><br>`;
+      }
+      return `<li>${this.content}</li><br><li>Submitted by: ${this.user_name}</li><br><br>`;
+    }
+  }
 
   $.get("/recipes/" + <%= @recipe.id %> + ".json", function(recipe_data){
     recipe_data["comments"].forEach(function(comment_data){
-      $("#comments").append(`<li>${comment_data["content"]}</li><br><li>Submitted by: ${comment_data["user"]["username"]}</li><br><br>`);
+      let comment= new Comment(comment_data["content"], comment_data["user"]["username"])
+      $("#comments").append(comment.truncate_if_long());
     });
   });
 
