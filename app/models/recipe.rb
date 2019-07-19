@@ -3,6 +3,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   belongs_to :food
   belongs_to :smoker
+  has_many :comments
+
   validates :food_id, presence: true
   #validates :smoker_id, presence: true
   validates :time, presence: true
