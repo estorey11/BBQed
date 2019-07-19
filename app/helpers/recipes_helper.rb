@@ -41,4 +41,10 @@ module RecipesHelper
        link_to 'Delete this recipe', user_recipe_path(@recipe.user, @recipe), method: :delete
     end
   end
+
+  def results_image(recipe)
+    if recipe.results_image.exists?
+      image_tag recipe.results_image.url(:medium)
+    end
+  end
 end
