@@ -5,5 +5,6 @@ class RecipeSerializer < ActiveModel::Serializer
   belongs_to :user
   belongs_to :food
   belongs_to :smoker
+  has_many :comments
 
 end

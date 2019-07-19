@@ -23,3 +23,18 @@
 <%= render partial: "comments/form" %>
 <%=edit_if_allowed(@recipe.user)%><br>
 <%=delete_if_allowed(@recipe.user)%>
+
+<script type="text/javascript" charset="utf-8">
+  //const comment_data_array= $.get("/recipes/" + <%= @recipe.id %> + ".json")["comments"];
+  //debugger;
+  //comment_data_array.forEach(function(comment_data){
+  //  $("#comments").append(`<li>${comment_data["content"]}</li><br><li>Submitted by: ${comment_data["user"]["username"]}</li><br><br>`);
+  //});
+
+  $.get("/recipes/" + <%= @recipe.id %> + ".json", function(recipe_data){
+    recipe_data["comments"].forEach(function(comment_data){
+      $("#comments").append(`<li>${comment_data["content"]}</li><br><li>Submitted by: ${comment_data["user"]["username"]}</li><br><br>`);
+    });
+  });
+
+</script>
