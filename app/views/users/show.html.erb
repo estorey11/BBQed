@@ -16,7 +16,7 @@
   const recipe_ids=<%= @recipes.map{|recipe| recipe.id} %>;
   recipe_ids.forEach(function(recipe_id) {
     $.get("/recipes/" + recipe_id + ".json", function(recipe_data) {
-      $("#recipes").append(`<li>${recipe_data["food_amount"]} ${recipe_data["food_unit"]}</li>`);
+      $("#recipes").append(`<li>${recipe_data["food_amount"] ? recipe_data["food_amount"] : ''} ${recipe_data["food_unit"]} ${recipe_data["food"]["animal"]} ${recipe_data["food"]["cut"]}  <button class="js-more" data-id="${recipe_id}">See Full Recipe</button></li>`);
     });
   });
 </script>
