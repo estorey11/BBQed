@@ -13,6 +13,13 @@
   <li><%= image_tag @recipe.results_image.url(:medium) %></li>
 </ul>
 <br>
+
+<div>
+  <h2>Comments</h2>
+  <ul id="comments">
+  </ul>
+</div>
+
 <%= render partial: "comments/form" %>
 <%=edit_if_allowed(@recipe.user)%><br>
 <%=delete_if_allowed(@recipe.user)%>
