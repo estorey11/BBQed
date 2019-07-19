@@ -27,6 +27,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe=Recipe.find_by(id: params[:id])
+    @comment=Comment.new
+
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @recipe }

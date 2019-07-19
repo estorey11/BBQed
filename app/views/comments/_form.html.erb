@@ -1,0 +1,7 @@
+<h1>Add Comment</h1>
+<%= form_for @comment do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :recipe_id, value: @recipe.id %>
+  <%= f.text_area :content %>
+  <%= f.submit "submit" %>
+<% end %>
