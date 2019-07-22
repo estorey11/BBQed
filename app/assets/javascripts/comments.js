@@ -22,3 +22,27 @@ $(document).ready(function() {
     });
   });
 });
+
+$(function() {
+  $(document).on("click", ".js-more", function() {
+    let id = $(this).data("id");
+    $.get("/comments/" + id + ".json", function(comment_data) {
+      $(`#comment-${id}`).text(`${comment_data["content"]}`);
+    });
+    $(this).remove();
+  });
+});
+
+$(function () {
+  $('.comment_form').submit(function(event) {
+    event.preventDefault();
+
+    let values = $(this).serialize();
+
+    let posting = $.post('/comments', values);
+
+    posting.done(function(data) {
+      $("#comments").append(`<li>${data["content"]}</li><br><li>Submitted by: ${data["user"]["username"]}</li><br><br>`);
+    });
+  });
+});

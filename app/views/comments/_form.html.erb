@@ -1,23 +1,7 @@
 <h3>Add Comment</h3>
-<%= form_for @comment do |f| %>
+<%= form_for @comment, :html => {:class => 'comment_form'} do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :recipe_id, value: @recipe.id %>
   <%= f.text_area :content %>
   <%= f.submit "Submit" %>
 <% end %>
-
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-    $('form').submit(function(event) {
-      event.preventDefault();
-
-      let values = $(this).serialize();
-
-      let posting = $.post('/comments', values);
-
-      posting.done(function(data) {
-        $("#comments").append(`<li>${data["content"]}</li><br><li>Submitted by: ${data["user"]["username"]}</li><br><br>`);
-      });
-    });
-  });
-</script>

@@ -23,17 +23,3 @@
 <%= render partial: "comments/form" %>
 <%=edit_if_allowed(@recipe.user)%><br>
 <%=delete_if_allowed(@recipe.user)%>
-
-
-
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $(document).on("click", ".js-more", function() {
-    let id = $(this).data("id");
-    $.get("/comments/" + id + ".json", function(comment_data) {
-      $(`#comment-${id}`).text(`${comment_data["content"]}`);
-    });
-    $(this).remove();
-  });
-});
-</script>
