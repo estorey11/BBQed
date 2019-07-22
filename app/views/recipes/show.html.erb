@@ -14,7 +14,7 @@
 </ul>
 <br>
 
-<div>
+<div class="comments" data-id="<%=@recipe.id%>">
   <h2>Comments</h2>
   <ul id="comments">
   </ul>
@@ -24,33 +24,7 @@
 <%=edit_if_allowed(@recipe.user)%><br>
 <%=delete_if_allowed(@recipe.user)%>
 
-<script type="text/javascript" charset="utf-8">
 
-  class Comment {
-    constructor(content, user_name, id) {
-      this.content = content;
-      this.user_name = user_name;
-      this.id=id;
-    }
-
-    truncate_if_long() {
-      if (this.content.length > 200){
-        return `<li id="comment-${this.id}">${this.content.substring(0, 240)}...</li><br><li>Submitted by: ${this.user_name}<br><button class="js-more" data-id="${this.id}">See Full Comment</button></li><br><br>`;
-      }
-      return `<li>${this.content}</li><br><li>Submitted by: ${this.user_name}</li><br><br>`;
-    }
-
-
-  }
-
-  $.get("/recipes/" + <%= @recipe.id %> + ".json", function(recipe_data){
-    recipe_data["comments"].forEach(function(comment_data){
-      let comment= new Comment(comment_data["content"], comment_data["user"]["username"], comment_data["id"])
-      $("#comments").append(comment.truncate_if_long());
-    });
-  });
-
-</script>
 
 <script type="text/javascript" charset="utf-8">
 $(function() {
